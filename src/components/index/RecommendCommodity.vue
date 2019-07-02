@@ -3,7 +3,7 @@
     <h2>section2</h2>
     <el-row>
       <div class="warp">
-        <el-col :span="6" v-for="item in recommends" :key="item.id">
+        <el-col :span="8" v-for="item in recommends" :key="item.id">
           <div class="grid-content bg-purple">
             <img :src="item.imgPath" alt="">
           </div>
@@ -19,7 +19,7 @@
 .recommend-commodiity{
   .el-row{
     position: relative;
-    height:343px;
+    height:107px;
     overflow: hidden;
     button{
       position: absolute;
@@ -47,7 +47,7 @@
 <style lang="scss" scoped>
   .el-row{
     img{
-      height:323px;
+      height:100px;
     }
   }
 </style>

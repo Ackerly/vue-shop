@@ -1,59 +1,82 @@
 <template>
-    <div>
-        <header>
-            <i class="el-icon-arrow-left"></i>
-            <h1>
-                用户登录
-            </h1>
-        </header>
-        <section>
-            <el-input v-model="input" placeholder="请输入账户"></el-input>
-            <el-input v-model="input" placeholder="请输入密码"></el-input>
-            <el-button type="primary">登录</el-button>
-        </section>
-    </div>
+  <div>
+    <v-header>
+      登录页
+    </v-header>
+    <section>
+      <el-input v-model="account" placeholder="请输入账户"></el-input>
+      <el-input v-model="password" placeholder="请输入密码" show-password></el-input>
+      <p data-v-7589b93f="" class="tip">Tip : 账号密码随便输</p>
+      <el-button type="primary" @click="login">登录</el-button>
+    </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-    #app{
-        margin-top:0
-    }
-    header{
-        background-color: #F8FCFF;
-        text-align: center;
-        position: relative;
-        height: 12vw;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        padding: 0 4vw;
-        i{
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-        h1{
-            width: 100%;
-            font-size: 1.2rem;
-            text-align: center
-        }
-    }
+  #app {
+    margin-top: 0
+  }
 </style>
 
 <style lang="scss">
-    section{
-        .el-input__inner{
-            width:80%;
-            margin:20px auto 0 auto;
-        }
-        .el-button{
-            width:80%;
-            margin:20px auto 0 auto;
-        }
+  section {
+    &>div {
+      margin-top: 20px;
     }
+
+    .el-input__inner {
+      width: 80%;
+    }
+
+    .tip {
+      width: 80%;
+      margin: 20px auto 0 auto;
+      text-align: left;
+    }
+
+    .el-button {
+      width: 80%;
+      margin: 20px auto 0 auto;
+    }
+  }
 </style>
+
+<script>
+import header from '@/components/common/Header'
+export default {
+  data () {
+    return {
+      account: '',
+      password: ''
+    }
+  },
+  components: {
+    'v-header': header
+  },
+  methods: {
+    // 登录按钮
+    login () {
+      if (this.account !== '' && this.password !== '') {
+        this.$message('登录成功,存储token,跳转网页')
+        this.$store.commit('CHANGE_TOKEN', 1)
+        this.$store.commit('userName', this.account)
+        // 登录成
+      } else {
+        this.$message('账号密码不能为空')
+      }
+      setTimeout(() => {
+        this.$router.push({
+          path: 'user',
+          name: 'user',
+          params: {
+            id: this.account
+          }
+        })
+        // this.$router.replace({
+        //   path: 'user'
+        // })
+      }, 1000)
+    }
+  }
+}
+</script>

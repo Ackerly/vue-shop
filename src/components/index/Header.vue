@@ -41,17 +41,16 @@
             overflow: hidden;
             h1{
                 color: #ccc;
-                font-size: 26px;
+                font-size: 22px;
             }
         }
         .search{
-            position: absolute;
-            top:50%;
-            right:120px;
-            transform: translateY(-50%)
+          text-align: right;
+          margin-right: 2%;
         }
         .carousel{
             margin-top:10px;
+            position: relative;
         }
         .service{
                 border-bottom: 1px solid #dadce0;
@@ -59,8 +58,10 @@
             ul{
                 display: flex;
                 list-style-type: none;
+                padding:0;
+                justify-content: space-around;
                 li{
-                    flex:1;
+                    font-size: 14px;
                 }
             }
         }
@@ -86,11 +87,11 @@
     }
     .el-carousel{
         .el-carousel__container{
-            height:400px;
+            height:300px;
         }
         img{
             width:100%;
-            height:400px;
+            height:300px;
         }
     }
     .service{
@@ -116,7 +117,6 @@ export default {
   watch: {
     carouselData () {
       this.carousel = this.carouselData
-      console.log(this.carousel)
     }
   }
 }

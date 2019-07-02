@@ -1,9 +1,9 @@
-import Vue from 'vue';
+'use strict';
 
-var scrollBarWidth = void 0;
+exports.__esModule = true;
 
-export default function () {
-  if (Vue.prototype.$isServer) return 0;
+exports.default = function () {
+  if (_vue2.default.prototype.$isServer) return 0;
   if (scrollBarWidth !== undefined) return scrollBarWidth;
 
   var outer = document.createElement('div');
@@ -27,3 +27,13 @@ export default function () {
 
   return scrollBarWidth;
 };
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var scrollBarWidth = void 0;
+
+;
